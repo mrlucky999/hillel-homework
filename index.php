@@ -8,5 +8,7 @@ $backlogcards = renderTemplate('kanban-card.php', [
 $content= renderTemplate('main.php', [
     'backlogcards' => $backlogcards,
 ]);
-
-require_once ('templates/layout.php');
+$page = renderTemplate('layout.php', [
+    'content' => $content,
+]);
+print $page;
