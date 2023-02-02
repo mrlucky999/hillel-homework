@@ -72,21 +72,22 @@
                     <a href="#" class="d-block">Володимир</a>
                 </div>
             </div>
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
+<?php foreach ($projects as $key => $project): ?>
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link active">
+                        <a href="index.php" class="nav-link<?=$key === 0 ? ' active' : ''?>">
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
-                                Назва проекту
-                                <span class="badge badge-info right">2</span>
+                                <?=htmlspecialchars($project['name']);?>
+                                <span class="badge badge-info right"><?=$project['count'];?></span>
                             </p>
                         </a>
                     </li>
+<?php endforeach; ?>
                     <li class="nav-item">
                         <a href="index.php" class="nav-link bg-olive">
                             <i class="nav-icon fas fa-plus"></i>
@@ -101,9 +102,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
     <?=$content?>;
-
 <!-- jQuery -->
 <script src="static/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

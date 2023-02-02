@@ -137,7 +137,7 @@ function renderTemplate($name, array $data = []) {
 
     ob_start();
     extract($data);
-    require $name;
+    require ($name);
 
     $result = ob_get_clean();
 

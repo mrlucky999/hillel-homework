@@ -1,7 +1,6 @@
-<div class="card-body connectedSortable" data-status="backlog">
-                    <div class="card card-info card-outline" data-task-id="1">
+ <div class="card card-info card-outline" data-task-id="1">
                         <div class="card-header">
-                            <h5 class="card-title">Зробити головну</h5>
+                            <h5 class="card-title"><?=htmlentities($task['title'] ?? '');?></h5>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool btn-link">#3</a>
                                 <a href="#" class="btn btn-tool">
@@ -11,10 +10,8 @@
                         </div>
                         <div class="card-body">
                             <p>
-                                <?=htmlentities($description);?>
-
+                                <?=htmlentities($task['description'] ?? '');?>
                             </p>
                             <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
                         </div>
                     </div>
-                </div>

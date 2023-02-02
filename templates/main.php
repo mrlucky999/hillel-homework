@@ -35,7 +35,11 @@
                         Беклог
                     </h3>
                 </div>
-                <?=$backlogcards;?>
+                <div class="card-body connectedSortable" data-status="backlog">
+        <?php foreach ($tasks['backlog'] as $task): ?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
+        <?php endforeach;?>
+                </div>
             </div>
             <div class="card card-row card-primary">
                 <div class="card-header">
@@ -44,6 +48,9 @@
                     </h3>
                 </div>
                 <div class="card-body connectedSortable" data-status="to-do">
+        <?php foreach ($tasks['todo'] as $task): ?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
+        <?php endforeach;?>
                 </div>
             </div>
             <div class="card card-row card-default">
@@ -53,6 +60,9 @@
                     </h3>
                 </div>
                 <div class="card-body connectedSortable" data-status="in-progress">
+        <?php foreach ($tasks['in_progress'] as $task): ?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task],);?>
+        <?php endforeach;?>
                 </div>
             </div>
             <div class="card card-row card-success">
@@ -62,6 +72,9 @@
                     </h3>
                 </div>
                 <div class="card-body connectedSortable" data-status="done">
+        <?php foreach ($tasks['done'] as $task): ?>
+        <?=renderTemplate('kanban-card', ['task' => $task]);?>
+        <?php endforeach;?>
                 </div>
             </div>
         </div>
