@@ -39,11 +39,15 @@ $tasks = [
     'done' => [],
 ];
 
+$pagename = 'Завдання та проекти | Дошка';
+
+
 $backlogcards = renderTemplate('kanban-card.php', [
-    'description' => 'First desc<script>alert(1);</script>',
+    'description' => [
+        'First desc<script>alert(1);</script>',]
 ]);
 
-$content= renderTemplate('main.php', [
+$content = renderTemplate('main.php', [
     'backlogcards' => $backlogcards.$backlogcards,
     'tasks' => $tasks,
 ]);
@@ -51,6 +55,7 @@ $content= renderTemplate('main.php', [
 $page = renderTemplate('layout.php', [
     'projects' => $projects,
     'content' => $content,
+    'title' => $pagename,
 ]);
 
 print $page;
