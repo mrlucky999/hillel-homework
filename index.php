@@ -21,12 +21,12 @@ $tasks = [
             'id' => 1,
             'title' => 'Задача 1',
             'description' => 'Описание задачи 1',
-            'due_date' => (''),
+            'due_date' => ('2023-02-05'),
         ],
         ['id' => 2,
             'title' => 'Задача 2',
             'description' => 'Описание задачи 2',
-            'due_date' => (''),
+            'due_date' => ('2023-02-12'),
         ],
     ],
     'todo' => [],
@@ -34,7 +34,7 @@ $tasks = [
             ['id' => 3,
             'title' => 'Задача 3',
             'description' => 'Описание задачи 3',
-            'due_date' => ('yesterday'),]
+            'due_date' => ('tomorrow'),]
     ],
     'done' => [],
 ];
