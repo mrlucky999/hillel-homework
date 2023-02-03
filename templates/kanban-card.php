@@ -1,4 +1,4 @@
- <div class="card card-info card-outline" data-task-id="1">
+<div class="card card-info card-outline" data-task-id="1">
                         <div class="card-header">
                             <h5 class="card-title"><?=htmlentities($task['title'] ?? '');?></h5>
                             <div class="card-tools">
@@ -12,6 +12,9 @@
                             <p>
                                 <?=htmlentities($task['description'] ?? '');?>
                             </p>
-                            <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                            <?php if (!empty($task['due_date'])):?>
+                            <small class="badge-<?=getHours($task['due_date']) > 24 ? 'success' : 'danger';?>"><i class="far fa-clock"></i><?=getHours($task['due_date'])?>часов</small>
+                            <?php endif?>
                         </div>
                     </div>
+
