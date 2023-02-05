@@ -21,7 +21,7 @@ $tasks = [
             'id' => 1,
             'title' => 'Задача 1',
             'description' => 'Описание задачи 1',
-            'due_date' => ('2023-02-05'),
+            'due_date' => ('2023-02-25'),
         ],
         ['id' => 2,
             'title' => 'Задача 2',
@@ -40,22 +40,10 @@ $tasks = [
 ];
 
 
-function checkfinishtask ($date) {
-
+function getHours($date) {
     $due_date = strtotime($date);
     $current_time = time();
     $difference = $due_date - $current_time;
-    $result = floor($difference / (60*60));
-    if($result > 24) {
-        return true;
-    }
-    return false;
-}
-
-function getHours($date) {
-    $value = strtotime($date);
-    $current = time();
-    $difference = $value - $current;
     return floor($difference / (60*60));
 
 }
