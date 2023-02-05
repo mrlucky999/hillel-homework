@@ -21,12 +21,12 @@ $tasks = [
             'id' => 1,
             'title' => 'Задача 1',
             'description' => 'Описание задачи 1',
-            'due_date' => ('2023-02-05'),
+            'due_date' => '2023-02-10',
         ],
         ['id' => 2,
             'title' => 'Задача 2',
             'description' => 'Описание задачи 2',
-            'due_date' => ('2023-02-12'),
+            'due_date' => '2023-02-13',
         ],
     ],
     'todo' => [],
@@ -34,31 +34,30 @@ $tasks = [
             ['id' => 3,
             'title' => 'Задача 3',
             'description' => 'Описание задачи 3',
-            'due_date' => ('tomorrow'),]
+            'due_date' => '2023-02-07',
+                ]
     ],
     'done' => [],
 ];
 
 
-function checkfinishtask ($date) {
 
+function getHours($date) {
     $due_date = strtotime($date);
     $current_time = time();
     $difference = $due_date - $current_time;
-    $result = floor($difference / (60*60));
-    if($result > 24) {
-        return true;
-    }
-    return false;
-}
-
-function getHours($date) {
-    $value = strtotime($date);
-    $current = time();
-    $difference = $value - $current;
     return floor($difference / (60*60));
 
 }
+
+//return checkfinishtask($date) ? 0 : floor((strtotime($date) - time()) / (60*60));
+//function getHours($date) {
+//    $value = strtotime($date);
+//    $current = time();
+//    $difference = $value - $current;
+//    return floor($difference / (60*60));
+
+//}
 
 
 $pagename = 'Завдання та проекти | Дошка';
