@@ -50,15 +50,6 @@ function getHours($date) {
 
 }
 
-//return checkfinishtask($date) ? 0 : floor((strtotime($date) - time()) / (60*60));
-//function getHours($date) {
-//    $value = strtotime($date);
-//    $current = time();
-//    $difference = $value - $current;
-//    return floor($difference / (60*60));
-
-//}
-
 
 $pagename = 'Завдання та проекти | Дошка';
 
