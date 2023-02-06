@@ -1,6 +1,7 @@
 <?php
 
-require_once ('helpers.php');
+require_once(' functions/helpers.php');
+require_once (' functions/functions.php');
 
 $projects = [
     [
@@ -39,14 +40,6 @@ $tasks = [
     'done' => [],
 ];
 
-
-function getHours($date) {
-    $due_date = strtotime($date);
-    $current_time = time();
-    $difference = $due_date - $current_time;
-    return floor($difference / (60*60));
-
-}
 
 
 $pagename = 'Завдання та проекти | Дошка';
