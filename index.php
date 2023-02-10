@@ -1,7 +1,7 @@
 <?php
 
-require_once(' functions/helpers.php');
-require_once (' functions/functions.php');
+require_once('functions/helpers.php');
+require_once ('functions/functions.php');
 
 $projects = [
     [
