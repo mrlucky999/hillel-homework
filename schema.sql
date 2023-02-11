@@ -7,16 +7,16 @@ CREATE TABLE users (
     reg_date DATETIME not null,
     email VARCHAR(20) not null,
     fname VARCHAR(20) not null,
-    pass VARCHAR(20) not null,
+    pass VARCHAR(255) not null,
     primary key (id),
     UNIQUE (email),
-    INDEX (email, fname)
+    INDEX (fname)
 );
 
 CREATE TABLE projects (
     id INT unsigned auto_increment not null,
     pname VARCHAR(20) not null,
-    user_id int not null,
+    user_id int unsigned not null,
     primary key (id),
     INDEX (pname),
     FOREIGN KEY (user_id) references users(id) ON UPDATE NO ACTION
@@ -24,12 +24,13 @@ CREATE TABLE projects (
 
 CREATE TABLE tasks (
     id INT unsigned auto_increment not null,
-    createdAt DATETIME not null,
+    created_at DATETIME not null,
     tstatus enum('backlog', 'to-do', 'in-progress', 'done') DEFAULT 'backlog' not null,
     tname VARCHAR(20) not null,
+    tname_id int unsigned not null,
     due_time DATETIME not null,
     primary key (id),
-    INDEX (tname, id),
-    FOREIGN KEY (tname) references users(fname) ON UPDATE NO ACTION,
-    FOREIGN KEY (tname) references projects(pname) ON UPDATE NO ACTION
+    INDEX (tname),
+    FOREIGN KEY (tname_id) references users(id) ON UPDATE NO ACTION,
+    FOREIGN KEY (tname_id) references projects(id) ON UPDATE NO ACTION
 );
