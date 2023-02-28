@@ -27,10 +27,12 @@ CREATE TABLE tasks (
     created_at DATETIME not null,
     tstatus enum('backlog', 'to-do', 'in-progress', 'done') DEFAULT 'backlog' not null,
     tname VARCHAR(20) not null,
-    tname_id int unsigned not null,
+    tdescribe VARCHAR(255),
+    user_id int unsigned not null,
+    projects_id int unsigned not null,
     due_time DATETIME not null,
     primary key (id),
     INDEX (tname),
-    FOREIGN KEY (tname_id) references users(id) ON UPDATE NO ACTION,
-    FOREIGN KEY (tname_id) references projects(id) ON UPDATE NO ACTION
+    FOREIGN KEY (user_id) references users(id) ON UPDATE NO ACTION,
+    FOREIGN KEY (projects_id) references projects(id) ON UPDATE NO ACTION
 );
