@@ -27,7 +27,10 @@ function getDbCon($config)
 
 function getProjects($mysqli)
 {
-    $sql_sup = "SELECT id, pname, user_id FROM projects";
+    $sql_sup =
+        "SELECT projects.id, projects.pname, count(t.id) AS num FROM projects
+        LEFT JOIN tasks AS t ON (t.projects_id = projects.id)
+        GROUP BY projects.id";
     $result = mysqli_query($mysqli, $sql_sup);
     if ($result === false) {
         die('Cant execute query: ' . mysqli_error($mysqli));
@@ -44,4 +47,6 @@ function getTasks($mysqli)
     }
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
+
 

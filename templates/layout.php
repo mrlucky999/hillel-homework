@@ -81,7 +81,7 @@
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
                                 <?=($project['pname']);?>
-                                <span class="badge badge-info right"><?=$project['id'];?></span>
+                                <span class="badge badge-info right"><?=($project['num']);?></span>
                             </p>
                         </a>
                     </li>

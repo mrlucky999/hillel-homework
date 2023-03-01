@@ -73,7 +73,7 @@
                 </div>
                 <div class="card-body connectedSortable" data-status="done">
         <?php foreach ($tasks['done'] as $task): ?>
-        <?=renderTemplate('kanban-card', ['task' => $task]);?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
         <?php endforeach;?>
                 </div>
             </div>

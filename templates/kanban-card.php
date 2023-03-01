@@ -12,8 +12,8 @@
                             <p>
                                 <?=htmlentities($task['tdescribe'] ?? '');?>
                             </p>
-                            <?php if (!empty($task['due_date'])):?>
-                            <small class="badge-<?=getTaskTimeText($task['due_date']) > 24 ? 'success' : 'danger';?>"><i class="far fa-clock"></i><?=getTaskTimeText($task['due_date'])?> <?php getTaskTimeText($task['due_date']);?> </small>
+                            <?php if (!empty($taTime['due_date'])):?>
+                            <small class="badge-<?=getTaskTimeText($taTime['due_date']) > 24 ? 'success' : 'danger';?>"><i class="far fa-clock"></i><?=getTaskTimeText($taTime['due_date'])?> <?php getTaskTimeText($taTime['due_date']);?> </small>
                             <?php endif?>
                         </div>
                     </div>
