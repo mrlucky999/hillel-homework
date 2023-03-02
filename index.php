@@ -29,18 +29,6 @@ foreach ($tasks as $task) {
     $tStatus[$status][] = $task;
 }
 
-//$taTime = [
-//  'due_time' => [],
-//];
-//
-//$tTime = getTaskTimeText($con);
-//
-//foreach ($tTime as $dueT) {
-//    $time = $dueT['due_time'];
-//    unset($dueT['due_time']);
-//    $taTime[$time][] = $dueT;
-//}
-
 
 $pageName = 'Завдання та проекти | Дошка';
 

@@ -5,3 +5,7 @@
 # Ignore Idea
 
 .idea
+
+# Ignore CS-Fixer
+
+.php-cs-fixer.cache
