@@ -28,7 +28,7 @@ function getDbCon($config)
 function getProjects($mysqli)
 {
     $sql_sup =
-        "SELECT projects.id, projects.pname, count(t.id) AS num FROM projects
+        "SELECT projects.id, projects.user_id, projects.pname, count(t.id) AS num FROM projects
         LEFT JOIN tasks AS t ON (t.projects_id = projects.id)
         GROUP BY projects.id";
     $result = mysqli_query($mysqli, $sql_sup);

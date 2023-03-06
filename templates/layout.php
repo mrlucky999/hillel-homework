@@ -77,11 +77,11 @@
                        with font-awesome or any other icon font library -->
 <?php foreach ($projects as $key => $project): ?>
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link<?=$key === 0 ? ' active' : ''?>">
+                        <a href="<?='project.php?id=' .  $project['id'];?>" class="nav-link<?=$key === 0 ? ' active' : ''?>">
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
-                                <?=($project['pname']);?>
-                                <span class="badge badge-info right"><?=($project['num']);?></span>
+                                <?=$project['pname'];?>
+                                <span class="badge badge-info right"><?=$project['num'];?></span>
                             </p>
                         </a>
                     </li>
