@@ -80,8 +80,8 @@
                         <a href="index.php" class="nav-link<?=$key === 0 ? ' active' : ''?>">
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
-                                <?=htmlspecialchars($project['name']);?>
-                                <span class="badge badge-info right"><?=$project['count'];?></span>
+                                <?=($project['pname']);?>
+                                <span class="badge badge-info right"><?=($project['num']);?></span>
                             </p>
                         </a>
                     </li>

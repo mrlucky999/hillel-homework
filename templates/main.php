@@ -48,7 +48,7 @@
                     </h3>
                 </div>
                 <div class="card-body connectedSortable" data-status="to-do">
-        <?php foreach ($tasks['todo'] as $task): ?>
+        <?php foreach ($tasks['to-do'] as $task): ?>
         <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
         <?php endforeach;?>
                 </div>
@@ -60,8 +60,8 @@
                     </h3>
                 </div>
                 <div class="card-body connectedSortable" data-status="in-progress">
-        <?php foreach ($tasks['in_progress'] as $task): ?>
-        <?=renderTemplate('kanban-card.php', ['task' => $task],);?>
+        <?php foreach ($tasks['in-progress'] as $task): ?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
         <?php endforeach;?>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="card-body connectedSortable" data-status="done">
         <?php foreach ($tasks['done'] as $task): ?>
-        <?=renderTemplate('kanban-card', ['task' => $task]);?>
+        <?=renderTemplate('kanban-card.php', ['task' => $task]);?>
         <?php endforeach;?>
                 </div>
             </div>
@@ -94,5 +94,5 @@
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-</div>
+
 <!-- ./wrapper -->

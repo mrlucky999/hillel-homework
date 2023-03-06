@@ -1,54 +1,45 @@
 <?php
 
-require_once ('helpers.php');
+require_once('functions/helpers.php');
+require_once('functions/functions.php');
 
-$projects = [
-    [
-        'id' => 1,
-        'name' => 'Проект 1',
-        'count' => 2,
-    ],
-    [
-        'id' => 2,
-        'name' => 'Проект 2',
-        'count' => 5,
-    ]
+$config = [
+    'host' => 'ithillel.localhost:8889',
+    'user' => 'root',
+    'pass' => 'root',
+    'db' => 'task_manager_db',
 ];
+$mysqli = mysqli_connect($config['host'], $config['user'], $config['pass'], $config['db']);
+$con = getDbCon($config);
+$projects = getProjects($con);
 
-$tasks = [
-    'backlog' => [
-        [
-            'id' => 1,
-            'title' => 'Задача 1',
-            'description' => 'Описание задачи 1',
-            'due_date' => '2023-02-05',
-        ],
-        ['id' => 2,
-            'title' => 'Задача 2',
-            'description' => 'Описание задачи 2',
-            'due_date' => '2023-02-10',
-        ],
-    ],
-    'todo' => [],
-    'in_progress' => [
-            ['id' => 3,
-            'title' => 'Задача 3',
-            'description' => 'Описание задачи 3',
-            'due_date' => '2023-02-15',]
-    ],
+
+$tStatus = [
+    'backlog' => [],
+    'to-do' => [],
+    'in-progress' => [],
     'done' => [],
 ];
 
-$pagename = 'Завдання та проекти | Дошка';
+$tasks = getTasks($con);
+
+foreach ($tasks as $task) {
+    $status = $task['tstatus'];
+    unset($task['tstatus']);
+    $tStatus[$status][] = $task;
+}
+
+
+$pageName = 'Завдання та проекти | Дошка';
 
 $content = renderTemplate('main.php', [
-    'tasks' => $tasks,
+    'tasks' => $tStatus,
 ]);
 
 $page = renderTemplate('layout.php', [
     'projects' => $projects,
     'content' => $content,
-    'title' => $pagename,
+    'title' => $pageName,
 ]);
 
 print $page;

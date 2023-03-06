@@ -1,0 +1,11 @@
+# Ignore Mac system files
+
+.DS_store
+
+# Ignore Idea
+
+.idea
+
+# Ignore CS-Fixer
+
+.php-cs-fixer.cache
