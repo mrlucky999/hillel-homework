@@ -4,11 +4,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1>Назва проекту</h1>
+                    <?php foreach ($projects as $project): ?>
+                    <h1><?php  echo 'Назва проекту: ' . $project['pname']; ?></h1>
+                    <?php endforeach;?>
                 </div>
                 <div class="col-sm-6 d-none d-sm-block">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Назва проекту</li>
+                        <?php foreach ($projects as $project): ?>
+                        <li class="breadcrumb-item active"><?php if($project['id'] == 1) {echo 'Назва проекту: ' . $project['pname'];}?></li>
+                        <?php endforeach;?>
                     </ol>
                 </div>
             </div>

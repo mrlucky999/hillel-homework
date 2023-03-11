@@ -25,28 +25,50 @@ function getDbCon($config)
     return $mysqli;
 }
 
-function getProjects($mysqli)
+function getProjects(mysqli $mysqli, int $userId): array
 {
     $sql_sup =
-        "SELECT projects.id, projects.pname, count(t.id) AS num FROM projects
+        "SELECT projects.id, projects.user_id, projects.pname, count(t.id) AS num FROM projects
         LEFT JOIN tasks AS t ON (t.projects_id = projects.id)
+        WHERE projects.user_id = ?                                                                 
         GROUP BY projects.id";
-    $result = mysqli_query($mysqli, $sql_sup);
-    if ($result === false) {
+
+    $stmt = mysqli_prepare($mysqli, $sql_sup);
+    if ($stmt === false) {
+        die('Cant prepare query: ' . mysqli_error($mysqli));
+    }
+
+    if (!mysqli_stmt_bind_param($stmt, 'i', $userId)){
+        die('Cant bind param' . mysqli_error($mysqli));
+    }
+
+    if (!mysqli_stmt_execute($stmt)) {
         die('Cant execute query: ' . mysqli_error($mysqli));
     }
+    $result = mysqli_stmt_get_result($stmt);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
-function getTasks($mysqli)
+function getTasks(mysqli $mysqli, int $projectsId, int $userId)
 {
-    $sql_sut = "SELECT id, tname, tstatus, due_time, tdescribe FROM tasks";
-    $result = mysqli_query($mysqli, $sql_sut);
-    if ($result === false) {
+    $sql_sut = "SELECT tasks.id, tasks.user_id, tasks.projects_id, tasks.tname, tasks.tstatus, tasks.due_time, tasks.tdescribe FROM tasks
+    LEFT JOIN projects AS p ON (p.id = tasks.projects_id)
+    WHERE tasks.projects_id = ? AND tasks.user_id = ?                                                               
+    GROUP BY tasks.id";
+
+    $stmt = mysqli_prepare($mysqli, $sql_sut);
+    if ($stmt === false) {
+        die('Cant prepare query: ' . mysqli_error($mysqli));
+    }
+    if (!mysqli_stmt_bind_param($stmt, 'ii', $projectsId, $userId)){
+        die('Cant bind param' . mysqli_error($mysqli));
+    }
+
+    if (!mysqli_stmt_execute($stmt)) {
         die('Cant execute query: ' . mysqli_error($mysqli));
     }
+    $result = mysqli_stmt_get_result($stmt);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
 
 

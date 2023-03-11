@@ -9,10 +9,13 @@ $config = [
     'pass' => 'root',
     'db' => 'task_manager_db',
 ];
-$mysqli = mysqli_connect($config['host'], $config['user'], $config['pass'], $config['db']);
-$con = getDbCon($config);
-$projects = getProjects($con);
 
+$con = getDbCon($config);
+
+$userId = 1;
+$projectId = 1;
+$projects = getProjects($con, $userId);
+$tasks = getTasks($con, $projectId, $userId);
 
 $tStatus = [
     'backlog' => [],
@@ -21,7 +24,7 @@ $tStatus = [
     'done' => [],
 ];
 
-$tasks = getTasks($con);
+
 
 foreach ($tasks as $task) {
     $status = $task['tstatus'];
@@ -34,6 +37,7 @@ $pageName = 'Завдання та проекти | Дошка';
 
 $content = renderTemplate('main.php', [
     'tasks' => $tStatus,
+    'projects' => $projects,
 ]);
 
 $page = renderTemplate('layout.php', [
