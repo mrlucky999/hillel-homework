@@ -11,8 +11,11 @@ $config = [
 ];
 
 $con = getDbCon($config);
-$projects = getProjects($con);
 
+$userId = 1;
+$projectId = 1;
+$projects = getProjects($con, $userId);
+$tasks = getTasks($con, $projectId, $userId);
 
 $tStatus = [
     'backlog' => [],
@@ -21,7 +24,7 @@ $tStatus = [
     'done' => [],
 ];
 
-$tasks = getTasks($con);
+
 
 foreach ($tasks as $task) {
     $status = $task['tstatus'];
